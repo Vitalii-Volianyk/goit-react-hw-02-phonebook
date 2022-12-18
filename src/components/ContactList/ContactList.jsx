@@ -1,4 +1,4 @@
-import css from './ContactList.module.css';
+// import css from './ContactList.module.css';
 import ContactItem from './ContactItem';
 
 const ContactList = ({ contacts, onRemove }) => {
@@ -9,7 +9,7 @@ const ContactList = ({ contacts, onRemove }) => {
           key={id}
           name={name}
           number={number}
-          idx={index}
+          idx={id}
           onRemove={onRemove}
         />
       ))}

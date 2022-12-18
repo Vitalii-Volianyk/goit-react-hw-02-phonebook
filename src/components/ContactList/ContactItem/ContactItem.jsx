@@ -1,4 +1,4 @@
-import css from './ContactItem.module.css';
+// import css from './ContactItem.module.css';
 
 const ContactItem = ({ idx, name, number, onRemove }) => {
   return (
@@ -11,7 +11,9 @@ const ContactItem = ({ idx, name, number, onRemove }) => {
         onClick={() => {
           onRemove(idx);
         }}
-      ></button>
+      >
+        Remove
+      </button>
     </li>
   );
 };

@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import css from './App.module.css';
+// import css from './App.module.css';
+import { nanoid } from 'nanoid';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
@@ -14,17 +15,52 @@ class App extends Component {
     ],
     filter: '',
   };
-  removeName(idx) {}
-  addName({ name, number }) {}
+  addName = ({ name, number }) => {
+    const names = this.state.contacts.map(contact => contact.name);
+    if (names.indexOf(name) >= 0) {
+      alert(name + ' is already in contacts');
+      return;
+    }
+    this.setState(prevState => {
+      return {
+        contacts: [{ name, number, id: nanoid() }, ...prevState.contacts],
+      };
+    });
+  };
+  removeName = idx => {
+    this.setState(prevState => {
+      let newContacts = [];
+      prevState.contacts.forEach(contact => {
+        if (contact.id !== idx) {
+          newContacts.push(contact);
+        }
+      });
+      return { contacts: newContacts };
+    });
+  };
+  handleFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+  getVisibleContacts = () => {
+    let { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
   render() {
+    const { filter } = this.state;
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addName} />
 
         <h2>Contacts</h2>
-        <Filter />
-        <ContactList onRemove={this.removeName} />
+        <Filter onChange={this.handleFilter} value={filter} />
+        <ContactList
+          contacts={this.getVisibleContacts()}
+          onRemove={this.removeName}
+        />
       </div>
     );
   }

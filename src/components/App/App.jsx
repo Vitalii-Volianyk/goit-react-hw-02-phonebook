@@ -1,5 +1,5 @@
 import { Component } from 'react';
-// import css from './App.module.css';
+import css from './App.module.css';
 import { nanoid } from 'nanoid';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
@@ -51,7 +51,7 @@ class App extends Component {
   render() {
     const { filter } = this.state;
     return (
-      <div>
+      <div className={css.container}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addName} />
 

@@ -1,9 +1,9 @@
-// import css from './ContactList.module.css';
+import css from './ContactList.module.css';
 import ContactItem from './ContactItem';
 
 const ContactList = ({ contacts, onRemove }) => {
   return (
-    <ul>
+    <ul className={css.container}>
       {contacts.map(({ id, name, number }, index) => (
         <ContactItem
           key={id}

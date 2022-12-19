@@ -1,13 +1,14 @@
-// import css from './ContactItem.module.css';
+import css from './ContactItem.module.css';
 
 const ContactItem = ({ idx, name, number, onRemove }) => {
   return (
-    <li>
+    <li className={css.item}>
       <p>
         {name}: {number}
       </p>
       <button
         type="button"
+        className={css.button}
         onClick={() => {
           onRemove(idx);
         }}

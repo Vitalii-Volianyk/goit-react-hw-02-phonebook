@@ -19,5 +19,10 @@ const ContactItem = ({ idx, name, number, onRemove }) => {
     </li>
   );
 };
-
+ContactItem.propTypes = {
+  idx: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
+  onRemove: PropTypes.func,
+};
 export default ContactItem;

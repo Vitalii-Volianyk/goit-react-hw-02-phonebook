@@ -1,5 +1,7 @@
 import css from './ContactList.module.css';
 import ContactItem from './ContactItem';
+import { PropTypes } from 'prop-types';
+import { prettyFormat } from '@testing-library/react';
 
 const ContactList = ({ contacts, onRemove }) => {
   return (
@@ -16,5 +18,8 @@ const ContactList = ({ contacts, onRemove }) => {
     </ul>
   );
 };
-
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  onRemove: PropTypes.func,
+};
 export default ContactList;

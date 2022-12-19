@@ -1,4 +1,5 @@
 import css from './ContactItem.module.css';
+import { PropTypes } from 'prop-types';
 
 const ContactItem = ({ idx, name, number, onRemove }) => {
   return (
